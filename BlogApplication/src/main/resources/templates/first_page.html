@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register or sign in</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<!--padaryti pirmaji puslapi  su keturiais mygtukais"register" "sign in as admin" "sign in as accounts" "not ready to commit? register
+as anonimous accounts"-->
+<body>
+<h1 th:text="#{welcome}"></h1>
+<div th:if="${registeredUser == null}" class="regForm">
+  <h2>Registration:</h2>
+  <form th:action="@{/users/register}" th:object="${userToRegister}" method="post">
+
+    <div class="inputField">
+      <label for="firstName" th:text="#{first.name}">First Name:</label>
+      <input type="text" name="firstName" id="firstName" th:field="*{firstName}">
+      <span  th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:errorclass="error"  ></span>
+    </div>
+
+    <div class="inputField">
+      <label for="lastName" th:text="#{last.name}">Last Name:</label>
+      <input type="text" name="lastName" id="lastName" th:field="*{lastName}">
+      <span  th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:errorclass="error"  ></span>
+    </div>
+
+    <div class="inputField">
+      <label for="email" th:text="#{email}">Email: </label>
+      <input type="email" name="email" id="email" th:field="*{email}">
+      <span  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="error"  ></span>
+    </div>
+
+    <div class="inputField">
+      <label for="password" th:text="#{password}">Password: </label>
+      <input type="password" name="password" id="password" th:field="*{password}">
+      <span  th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="error"  ></span>
+    </div>
+
+    <div class="action">
+      <a href="#" class="link" th:text="#{forgot.password}"></a>
+      <button type="submit" th:text="#{to.register}">Register</button>
+    </div>
+  </form>
+</div>
+
+
+<h3>Already an accounts?</h3>
+<h2>Sign In:</h2>
+<form th:action="@{/users/signIn}" th:object="${userToSignIn}" method="post" class="signInForm" >
+
+  <div class="inputField">
+    <label for="email" th:text="#{email}">Email: </label>
+    <input type="email" name="email" id="emailSignIn" th:field="*{email}">
+    <span  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="error"  ></span>
+  </div>
+
+  <div class="inputField">
+    <label for="password" th:text="#{password}">Password: </label>
+    <input type="password" name="password" id="passwordSignIn" th:field="*{password}">
+    <span  th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="error"  ></span>
+  </div>
+</form>
+
+<!--<div th:if="${registeredUser != null}">
+  <span>id:</span>
+  <span th:text="${registeredUser.id}"></span><br>
+
+  <span>First Name:</span>
+  <span th:text="${registeredUser.firstName}"></span><br>
+
+  <span>email:</span>
+  <span th:text="${registeredUser.email}"></span>
+</div>-->
+</body>
+</html>

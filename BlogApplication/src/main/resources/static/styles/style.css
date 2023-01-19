@@ -1,0 +1,14 @@
+body{
+color: #666666;
+    font-size: 14px;
+    font-family: Poppins;
+    line-height: 1.80857;
+    font-weight: normal;
+    overflow-x: hidden;
+}
+
+.signInForm{
+position: center;
+}
+.regForm{
+position: center;}

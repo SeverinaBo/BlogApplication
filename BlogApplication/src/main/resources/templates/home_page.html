@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Blog</title>
+</head>
+<body>
+<div class="container">
+    <h1>DEMO BLOG APPLICATION</h1>
+    <hr />
+    <ul>
+        <li><a th:href="@{/posts/new}">New Post</a></li>
+    </ul>
+    <div class="posts-container">
+        <div class="post" th:each="blogPost : ${blogPosts}">
+            <h2><a th:href="@{'/blogPosts/' + ${blogPosts.id}}" th:text="${blogPosts.title}">Title</a></h2>
+            <h5 th:text="'Written by ' + ${blogPosts.accounts.firstName}">Account First Name</h5>
+            <h5 th:text="'Published at ' + ${blogPosts.createdAt}">Created At</h5>
+            <h5 th:text="'Updated at ' + ${blogPosts.updatedAt}">Updated At</h5>
+            <p th:text="${blogPosts.content}">content</p>
+            <br>
+        </div>
+    </div>
+<!--<button id="registerBtn">Register</button>-->
+
+<!--<div calss="connectForm">
+    <form method="post">
+        <div class="inputField">
+            <label for="firstName" >First Name</label>
+            <input type="text" name="firstName" id="firstName">
+        </div>
+
+        <div class="inputField">
+            <label for="lastName"> Last Name</label>
+            <input type="text" name="lastName" id="lastName">
+        </div>
+        <div class="inputField">
+            <label for="password" >Password</label>
+            <input type="password" name="password" id="password" >
+        </div>
+        <button id="adminBtn"> Sign in as Admin</button>
+        <button id="userBtn">Sign in as User</button>
+        <button id="anonymUserBtn">Sign in as anonymous accounts</button>
+    </form>-->
+<!--
+
+</div>-->
+
+
+
+
+<!--code from eshop app-->
+<!--<div class="regForm">
+    <form method="post">
+        <div class="inputField">
+            <label for="firstName" ></label>
+            <input type="text" name="firstName" id="firstName">
+        </div>
+        <div class="inputField">
+            <label for="lastName"></label>
+            <input type="text" name="lastName" id="lastName" th:field="*{lastName}">
+        </div>
+        <div class="inputField">
+            <label for="email" th:text="#{email}"></label>
+            <input type="email" name="email" id="email" th:field="*{email}">
+        </div>
+        <div class="inputField">
+            <label for="password" th:text="#{password}"></label>
+            <input type="password" name="password" id="password" th:field="*{password}">
+        </div>
+        <div class="action">
+            <a href="#" class="link" th:text="#{forgot.password}"></a>
+            <button type="submit" th:text="#{to.register}"></button>
+        </div>
+    </form>
+</div>-->
+</body>
+</html>
